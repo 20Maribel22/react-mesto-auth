@@ -32,22 +32,26 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
+    if (loggedIn) {
     api
       .getUserInfo()
       .then((data) => {
         setCurrentUser(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
+    if (loggedIn) {
     api
       .getInitialCards()
       .then((data) => {
         setCards(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");

@@ -47,6 +47,8 @@ function AddPlacePopup(props) {
           id="newname-item"
           name="newname"
           placeholder="Название"
+          minLength="2"
+          maxLength="30"
           required
         />
         <span className="popup__item-error newname-item-error"></span>

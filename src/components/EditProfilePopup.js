@@ -49,6 +49,8 @@ function EditProfilePopup(props) {
           id="name-item"
           name="name"
           placeholder="Имя"
+          minLength="2"
+          maxLength="40"
           required
         />
         <span className="popup__item-error name-item-error"></span>
@@ -62,6 +64,8 @@ function EditProfilePopup(props) {
           id="job-item"
           name="job"
           placeholder="О себе"
+          minLength="2"
+          maxLength="200"
           required
         />
         <span className="popup__item-error job-item-error"></span>
