@@ -58,7 +58,6 @@ function AddPlacePopup(props) {
           type="url"
           className="popup__item popup__item_type_link"
           id="link-item"
-          pattern="https://.*"
           name="link"
           placeholder="Ссылка на картинку"
           required

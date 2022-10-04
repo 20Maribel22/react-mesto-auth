@@ -55,15 +55,18 @@ function App() {
       auth
         .getContent(jwt)
         .then((res) => {
-          setUserEmail(res.data.email);
-          setLoggedIn(true);
-          history.push("/");
+          if (res) {
+            setUserEmail(res.data.email);
+            setLoggedIn(true);
+            history.push("/");
+          }
         })
         .catch((err) => {
+          setLoggedIn(false);
           console.log(err);
         });
     }
-  }, []);
+  }, [loggedIn]);
 
   function handleUpdateUser({ name, about }) {
     api
@@ -159,6 +162,7 @@ function App() {
         if (res) {
           setStatus(true);
           setIsInfoTooltipPopupOpen(true);
+          history.push("/sign-in");
         }
       })
       .catch((err) => {
@@ -193,7 +197,11 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header userEmail={userEmail} loggedIn={loggedIn} onLogout={handleLogout} />
+        <Header
+          userEmail={userEmail}
+          loggedIn={loggedIn}
+          onLogout={handleLogout}
+        />
         <ProtectedRoute
           exact
           path="/"
